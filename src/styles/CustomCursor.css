@@ -1,0 +1,25 @@
+/* ── Custom Cursor ──────────────────────── */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  background: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.35s var(--ease-reveal),
+              height 0.35s var(--ease-reveal),
+              border-radius 0.35s var(--ease-reveal);
+  will-change: transform;
+}
+
+/* Hide on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+}

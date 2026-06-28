@@ -1,0 +1,163 @@
+/* ── Experience Section ─────────────────── */
+.experience {
+  border-top: 1px solid var(--border);
+  background: var(--bg-alt);
+}
+
+.exp-glow { display: none; }
+
+.exp-header { max-width: 580px; margin-bottom: 60px; }
+
+/* ── Timeline ── */
+.timeline {
+  position: relative;
+  padding-left: 48px;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 11px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border-strong);
+}
+
+/* ── Item ── */
+.timeline-item {
+  position: relative;
+  margin-bottom: 48px;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+
+.timeline-dot {
+  position: absolute;
+  left: -48px;
+  top: 4px;
+  width: 24px;
+  height: 24px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: var(--t-base);
+}
+
+.timeline-item.active .timeline-dot {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+.timeline-item:hover .timeline-dot {
+  border-color: var(--text);
+}
+
+.dot-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: var(--t-base);
+}
+
+.timeline-item.active .dot-icon {
+  color: var(--bg);
+}
+
+.timeline-item:hover .dot-icon {
+  color: var(--text);
+}
+
+.dot-icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+.timeline-year {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.timeline-card {
+  padding: 28px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  transition: var(--t-base);
+}
+
+.timeline-card:hover {
+  border-color: var(--text);
+}
+
+.timeline-title {
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.timeline-desc {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.timeline-tag {
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.active-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.active-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--text);
+  animation: activePulse 2s ease-in-out infinite;
+}
+
+@keyframes activePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .timeline { padding-left: 32px; }
+  .timeline-dot { left: -32px; }
+  .timeline-card { padding: 20px; }
+}
