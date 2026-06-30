@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import '../styles/Contact.css'
+import useScrollReveal from '../hooks/useScrollReveal'
 
 const CONTACT_ITEMS = [
   {
@@ -48,6 +49,7 @@ function validate(f) {
 }
 
 export default function Contact() {
+  const ref = useScrollReveal()
   const [fields, setFields] = useState(INITIAL)
   const [errors, setErrors] = useState({})
   const [touched, setTouched] = useState({})
@@ -112,7 +114,7 @@ export default function Contact() {
     `contact-field${errors[name] && touched[name] ? ' field-error' : ''}${!errors[name] && touched[name] && fields[name] ? ' field-ok' : ''}`
 
   return (
-    <section className="section contact" id="contact">
+    <section className="section contact" id="contact" ref={ref}>
       <div className="contact-glow" aria-hidden="true" />
       <div className="container">
         <div className="contact-header">

@@ -1,4 +1,5 @@
 import '../styles/Skills.css'
+import useScrollReveal from '../hooks/useScrollReveal'
 
 const SKILL_CATEGORIES = [
   {
@@ -65,8 +66,9 @@ function SkillCard({ name, abbr, color, bg, index }) {
 }
 
 export default function Skills() {
+  const ref = useScrollReveal()
   return (
-    <section className="section skills" id="skills">
+    <section className="section skills" id="skills" ref={ref}>
       {/* section glow */}
       <div className="skills-glow" aria-hidden="true" />
 

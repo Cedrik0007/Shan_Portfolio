@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import '../styles/About.css'
+import useScrollReveal from '../hooks/useScrollReveal'
 
 const STATS = [
   {
@@ -83,7 +84,7 @@ function StatCard({ value, suffix, label, icon, active }) {
 }
 
 export default function About() {
-  const ref = useRef(null)
+  const ref = useScrollReveal()
   const [active, setActive] = useState(false)
 
   useEffect(() => {
@@ -91,11 +92,11 @@ export default function About() {
     if (!el) return
     const obs = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setActive(true); obs.disconnect() } },
-      { threshold: 0.25 }
+      { threshold: 0.05 }
     )
     obs.observe(el)
     return () => obs.disconnect()
-  }, [])
+  }, [ref])
 
   return (
     <section className="section about" id="about" ref={ref}>

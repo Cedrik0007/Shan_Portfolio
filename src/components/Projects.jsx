@@ -1,4 +1,5 @@
 import '../styles/Projects.css'
+import useScrollReveal from '../hooks/useScrollReveal'
 const ImahkImg = 'https://res.cloudinary.com/rlokioxu/image/upload/v1782809349/Imahk_f7bcnk.png'
 const HonghuiImg = 'https://res.cloudinary.com/rlokioxu/image/upload/v1782809349/Honghui_o6gssm.png'
 const AdminImahkImg = 'https://res.cloudinary.com/rlokioxu/image/upload/v1782809343/Admin_imahk_zspsou.png'
@@ -164,8 +165,9 @@ function ProjectCard({ title, desc, stack, Thumb, imgsrc, github, demo, accent, 
 }
 
 export default function Projects() {
+  const ref = useScrollReveal()
   return (
-    <section className="section projects" id="projects">
+    <section className="section projects" id="projects" ref={ref}>
       <div className="container">
         <div className="projects-header">
           <span className="eyebrow fade-up">Featured Projects</span>

@@ -232,8 +232,8 @@ select {
 /* ══ Scroll Animations ══════════════════ */
 .fade-up {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s var(--ease-reveal), transform 0.8s var(--ease-reveal);
+  transform: translateY(24px);
+  transition: opacity 0.6s var(--ease-reveal), transform 0.6s var(--ease-reveal);
   will-change: opacity, transform;
 }
 

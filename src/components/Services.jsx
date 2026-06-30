@@ -1,4 +1,5 @@
 import '../styles/Services.css'
+import useScrollReveal from '../hooks/useScrollReveal'
 
 const SERVICES = [
   {
@@ -61,8 +62,9 @@ const SERVICES = [
 ]
 
 export default function Services() {
+  const ref = useScrollReveal()
   return (
-    <section className="section services" id="services">
+    <section className="section services" id="services" ref={ref}>
       <div className="container">
         <div className="services-header">
           <span className="eyebrow fade-up">What I Offer</span>

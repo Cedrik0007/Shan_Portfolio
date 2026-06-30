@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+/* ─── Preloader Screen Overlay ─── */
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #000000;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999; /* Highest depth in the app */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 1;
+  pointer-events: all;
+  will-change: opacity;
+}
+
+/* ─── Centered Logo Typography ─── */
+.preloader-logo {
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  font-size: clamp(40px, 8vw, 96px);
+  color: #ffffff;
+  letter-spacing: 0.12em;
+  /* Compensate for trailing letter-spacing of the last letter to ensure mathematical centering */
+  margin-right: -0.12em; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* ─── Staggered Opacity Animation ─── */
+.preloader-letter {
+  display: inline-block;
+  opacity: 1;
+  animation: letterFade 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: opacity;
+}
+
+/* Left-to-right fade-out stagger delays (~50-60ms apart) */
+.preloader-letter:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.preloader-letter:nth-child(2) {
+  animation-delay: 0.06s;
+}
+
+.preloader-letter:nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+.preloader-letter:nth-child(4) {
+  animation-delay: 0.18s;
+}
+
+/* 
+  Loop animation keyframes:
+  Visible -> Smooth fade-out -> Brief hold on black -> Smooth fade-in -> Repeat
+*/
+@keyframes letterFade {
+  0%, 15% {
+    opacity: 1;
+  }
+  35%, 55% {
+    opacity: 0;
+  }
+  75%, 100% {
+    opacity: 1;
+  }
+}
+
+/* ─── Smooth Overlay Fade-Out ─── */
+.preloader-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Accessibility: Reduced Motion Support ─── */
+@media (prefers-reduced-motion: reduce) {
+  .preloader-letter {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}

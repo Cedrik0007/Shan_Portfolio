@@ -1,6 +1,5 @@
-import { useEffect, useRef } from 'react'
 import '../styles/Hero.css'
-
+import useScrollReveal from '../hooks/useScrollReveal'
 const devimage = "https://res.cloudinary.com/rlokioxu/image/upload/v1782809351/Shan_2_i4sana.jpg"
 import resumePdf from "../assets/Sanjay N Resume.pdf"
 
@@ -43,17 +42,7 @@ const MARQUEE_ITEMS = [
 
 /* ── Hero Component ───────────────────── */
 export default function Hero() {
-  const sectionRef = useRef(null)
-
-  /* Trigger reveal and fade-up animations on mount */
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      sectionRef.current?.querySelectorAll('.reveal-text, .fade-up').forEach(el => {
-        el.classList.add('visible')
-      })
-    }, 150)
-    return () => clearTimeout(timer)
-  }, [])
+  const sectionRef = useScrollReveal()
 
   const marqueeContent = MARQUEE_ITEMS.map(item => `${item} — `).join('')
 

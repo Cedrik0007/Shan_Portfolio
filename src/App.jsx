@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState } from 'react'
 import CustomCursor from './components/CustomCursor'
 import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/Navbar'
@@ -12,28 +12,15 @@ import GitHubDash from './components/GitHubDash'
 import Contact from './components/Contact'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
+import Preloader from './components/Preloader'
 import './styles/App.css'
 
 export default function App() {
-  /* ── Intersection Observer for scroll animations ── */
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible')
-          }
-        })
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-    )
-    const els = document.querySelectorAll('.fade-up')
-    els.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
+  const [loading, setLoading] = useState(true)
 
   return (
     <div className="app">
+      {loading && <Preloader onComplete={() => setLoading(false)} />}
       <CustomCursor />
       <ScrollProgress />
       <Navbar />

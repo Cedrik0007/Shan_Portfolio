@@ -1,11 +1,13 @@
 import '../styles/CTA.css'
+import useScrollReveal from '../hooks/useScrollReveal'
 
 export default function CTA() {
+  const ref = useScrollReveal()
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
   return (
-    <section className="cta" aria-labelledby="cta-heading">
+    <section className="cta" aria-labelledby="cta-heading" ref={ref}>
       {/* Decorative orbs */}
       <div className="cta-orb cta-orb-1" aria-hidden="true" />
       <div className="cta-orb cta-orb-2" aria-hidden="true" />
