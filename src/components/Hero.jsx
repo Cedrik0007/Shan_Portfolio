@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react'
 import '../styles/Hero.css'
 
-import devimage from "../assets/Shan_2.png"
+const devimage = "https://res.cloudinary.com/rlokioxu/image/upload/v1782809351/Shan_2_i4sana.jpg"
+import resumePdf from "../assets/Sanjay N Resume.pdf"
 
 /* ── Social links ─────────────────────── */
 const SOCIALS = [
@@ -91,7 +92,7 @@ export default function Hero() {
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </button>
-              <a href="#" className="btn-secondary" onClick={e => e.preventDefault()}>
+              <a href={resumePdf} className="btn-secondary" target="_blank" rel="noreferrer" download="Sanjay_N_Resume.pdf">
                 Download Resume
               </a>
             </div>

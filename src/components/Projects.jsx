@@ -1,7 +1,7 @@
 import '../styles/Projects.css'
-import ImahkImg from '../assets/Imahk.png'
-import HonghuiImg from '../assets/Honghui.png'
-import AdminImahkImg from '../assets/Admin_imahk.png'
+const ImahkImg = 'https://res.cloudinary.com/rlokioxu/image/upload/v1782809349/Imahk_f7bcnk.png'
+const HonghuiImg = 'https://res.cloudinary.com/rlokioxu/image/upload/v1782809349/Honghui_o6gssm.png'
+const AdminImahkImg = 'https://res.cloudinary.com/rlokioxu/image/upload/v1782809343/Admin_imahk_zspsou.png'
 
 /* ── Project thumbnail SVGs ─────────── */
 function FashionThumb() {

@@ -4,9 +4,14 @@
   background: var(--bg-alt);
 }
 
-.skills-glow { display: none; }
+.skills-glow {
+  display: none;
+}
 
-.skills-header { max-width: 580px; margin-bottom: 60px; }
+.skills-header {
+  max-width: 580px;
+  margin-bottom: 60px;
+}
 
 .skills-grid {
   display: flex;
@@ -14,7 +19,7 @@
   gap: 48px;
 }
 
-.skill-category {}
+/* .skill-category {} */
 
 .category-label {
   font-family: var(--font-mono);
@@ -82,8 +87,13 @@
   text-align: center;
 }
 
-.skill-bar-track { display: none; }
-.skill-bar-fill  { display: none; }
+.skill-bar-track {
+  display: none;
+}
+
+.skill-bar-fill {
+  display: none;
+}
 
 /* ── Responsive ── */
 @media (max-width: 600px) {

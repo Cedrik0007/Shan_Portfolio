@@ -7,7 +7,10 @@
   text-align: center;
 }
 
-.cta-orb, .cta-grid { display: none; }
+.cta-orb,
+.cta-grid {
+  display: none;
+}
 
 .cta-inner {
   display: flex;
@@ -53,10 +56,10 @@
   justify-content: center;
 }
 
-.cta-btn-primary,
+/* .cta-btn-primary,
 .cta-btn-secondary {
-  /* inherited from global btn styles */
-}
+  inherited from global btn styles
+} */
 
 .cta-pills {
   display: flex;
@@ -85,5 +88,7 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .cta { padding: 72px 0; }
+  .cta {
+    padding: 72px 0;
+  }
 }
