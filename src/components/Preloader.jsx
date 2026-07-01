@@ -17,11 +17,11 @@ export default function Preloader({ onComplete }) {
     }
   }, [])
 
-  // 2. Ensure the animation runs for at least one full cycle (~1.8 seconds)
+  // 2. Ensure the animation runs for at least one full cycle (~2.6 seconds)
   useEffect(() => {
     const timer = setTimeout(() => {
       setMinTimeElapsed(true)
-    }, 1800)
+    }, 2600)
     return () => clearTimeout(timer)
   }, [])
 

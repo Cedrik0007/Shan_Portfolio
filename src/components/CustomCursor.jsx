@@ -15,8 +15,10 @@ export default function CustomCursor() {
     pos.current.y = lerp(pos.current.y, target.current.y, 0.15)
 
     if (cursorRef.current) {
+      // cursorRef.current.style.transform =
+      //   `translate(${pos.current.x}px, ${pos.current.y}px) scale(${hovering.current ? 2.5 : 1})`
       cursorRef.current.style.transform =
-        `translate(${pos.current.x}px, ${pos.current.y}px) scale(${hovering.current ? 2.5 : 1})`
+        `translate3d(${pos.current.x}px, ${pos.current.y}px, 0) scale(${hovering.current ? 2.5 : 1})`
     }
 
     raf.current = requestAnimationFrame(animate)

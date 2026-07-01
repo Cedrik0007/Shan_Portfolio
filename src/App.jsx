@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import LoadingContext from './context/LoadingContext'
 import CustomCursor from './components/CustomCursor'
 import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/Navbar'
@@ -19,23 +20,26 @@ export default function App() {
   const [loading, setLoading] = useState(true)
 
   return (
-    <div className="app">
-      {loading && <Preloader onComplete={() => setLoading(false)} />}
-      <CustomCursor />
-      <ScrollProgress />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Services />
-        {/* <GitHubDash /> */}
-        <Contact />
-        <CTA />
-      </main>
-      <Footer />
-    </div>
+    <LoadingContext.Provider value={loading}>
+      <div className="app">
+        {loading && <Preloader onComplete={() => setLoading(false)} />}
+        <CustomCursor />
+        <ScrollProgress />
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Services />
+          {/* <GitHubDash /> */}
+          <Contact />
+          <CTA />
+        </main>
+        <Footer />
+      </div>
+    </LoadingContext.Provider>
   )
 }
+

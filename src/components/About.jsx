@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import '../styles/About.css'
 import useScrollReveal from '../hooks/useScrollReveal'
+import { useLoading } from '../context/LoadingContext'
 
 const STATS = [
   {
@@ -86,8 +87,12 @@ function StatCard({ value, suffix, label, icon, active }) {
 export default function About() {
   const ref = useScrollReveal()
   const [active, setActive] = useState(false)
+  const loading = useLoading()
 
   useEffect(() => {
+    // Don't start the stat counter observer until the preloader finishes
+    if (loading) return
+
     const el = ref.current
     if (!el) return
     const obs = new IntersectionObserver(
@@ -96,7 +101,7 @@ export default function About() {
     )
     obs.observe(el)
     return () => obs.disconnect()
-  }, [ref])
+  }, [ref, loading])
 
   return (
     <section className="section about" id="about" ref={ref}>
