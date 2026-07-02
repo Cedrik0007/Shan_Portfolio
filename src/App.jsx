@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import LoadingContext from './context/LoadingContext'
 import CustomCursor from './components/CustomCursor'
 import ScrollProgress from './components/ScrollProgress'
@@ -14,15 +14,40 @@ import Contact from './components/Contact'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 import Preloader from './components/Preloader'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import './styles/App.css'
 
 export default function App() {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return !sessionStorage.getItem('portfolio-preloader-shown')
+    }
+    return true
+  })
+
+  useEffect(() => {
+    if (!loading) {
+      AOS.init({
+        once: true,
+        offset: 40,
+        duration: 800,
+        delay: 50,
+      })
+    }
+  }, [loading])
 
   return (
     <LoadingContext.Provider value={loading}>
       <div className="app">
-        {loading && <Preloader onComplete={() => setLoading(false)} />}
+        {loading && (
+          <Preloader
+            onComplete={() => {
+              setLoading(false)
+              sessionStorage.setItem('portfolio-preloader-shown', 'true')
+            }}
+          />
+        )}
         <CustomCursor />
         <ScrollProgress />
         <Navbar />

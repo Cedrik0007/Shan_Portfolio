@@ -1,5 +1,4 @@
 import '../styles/Experience.css'
-import useScrollReveal from '../hooks/useScrollReveal'
 
 const TIMELINE = [
   {
@@ -42,14 +41,13 @@ const TIMELINE = [
 ]
 
 export default function Experience() {
-  const ref = useScrollReveal()
   return (
-    <section className="section experience" id="experience" ref={ref}>
+    <section className="section experience" id="experience">
       <div className="exp-glow" aria-hidden="true" />
       <div className="container">
         <div className="exp-header">
-          <span className="eyebrow fade-up">My Journey</span>
-          <h2 className="section-title fade-up stagger-1">
+          <span className="eyebrow" data-aos="portfolio-fade-up">My Journey</span>
+          <h2 className="section-title" data-aos="portfolio-fade-up" data-aos-delay="100">
             My Learning &amp; <span className="gradient-text">Development Path</span>
           </h2>
         </div>
@@ -60,7 +58,9 @@ export default function Experience() {
           {TIMELINE.map((item, i) => (
             <div
               key={`${item.year}-${i}`}
-              className={`timeline-item fade-up stagger-${i + 1}${item.active ? ' active' : ''}`}
+              className={`timeline-item${item.active ? ' active' : ''}`}
+              data-aos="portfolio-fade-up"
+              data-aos-delay={100 * i}
             >
               {/* Connector dot */}
               <div className="timeline-dot" aria-hidden="true">

@@ -1,5 +1,4 @@
 import '../styles/Skills.css'
-import useScrollReveal from '../hooks/useScrollReveal'
 
 const SKILL_CATEGORIES = [
   {
@@ -51,8 +50,10 @@ const SKILL_CATEGORIES = [
 function SkillCard({ name, abbr, color, bg, index }) {
   return (
     <div
-      className={`skill-card glass-card fade-up stagger-${(index % 6) + 1}`}
+      className="skill-card glass-card"
       style={{ '--sk-color': color, '--sk-bg': bg }}
+      data-aos="portfolio-fade-up"
+      data-aos-delay={50 * (index % 6)}
     >
       <div className="skill-icon-wrap" style={{ background: bg, borderColor: `${color}33` }}>
         <span className="skill-abbr" style={{ color }}>{abbr}</span>
@@ -66,19 +67,18 @@ function SkillCard({ name, abbr, color, bg, index }) {
 }
 
 export default function Skills() {
-  const ref = useScrollReveal()
   return (
-    <section className="section skills" id="skills" ref={ref}>
+    <section className="section skills" id="skills">
       {/* section glow */}
       <div className="skills-glow" aria-hidden="true" />
 
       <div className="container">
         <div className="skills-header">
-          <span className="eyebrow fade-up">My Skills</span>
-          <h2 className="section-title fade-up stagger-1">
+          <span className="eyebrow" data-aos="portfolio-fade-up">My Skills</span>
+          <h2 className="section-title" data-aos="portfolio-fade-up" data-aos-delay="100">
             Technologies <span className="gradient-text">I Work With</span>
           </h2>
-          <p className="section-subtitle fade-up stagger-2">
+          <p className="section-subtitle" data-aos="portfolio-fade-up" data-aos-delay="200">
             A toolkit built for shipping robust, scalable MERN applications from design to deployment.
           </p>
         </div>
@@ -86,7 +86,7 @@ export default function Skills() {
         <div className="skills-grid">
           {SKILL_CATEGORIES.map((cat, ci) => (
             <div key={cat.category} className="skill-category">
-              <h3 className="category-label fade-up">{cat.category}</h3>
+              <h3 className="category-label" data-aos="portfolio-fade-up">{cat.category}</h3>
               <div className="skill-row">
                 {cat.skills.map((sk, si) => (
                   <SkillCard key={sk.name} {...sk} index={ci * 4 + si} />

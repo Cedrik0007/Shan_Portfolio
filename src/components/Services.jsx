@@ -1,5 +1,4 @@
 import '../styles/Services.css'
-import useScrollReveal from '../hooks/useScrollReveal'
 
 const SERVICES = [
   {
@@ -62,23 +61,28 @@ const SERVICES = [
 ]
 
 export default function Services() {
-  const ref = useScrollReveal()
   return (
-    <section className="section services" id="services" ref={ref}>
+    <section className="section services" id="services">
       <div className="container">
         <div className="services-header">
-          <span className="eyebrow fade-up">What I Offer</span>
-          <h2 className="section-title fade-up stagger-1">
+          <span className="eyebrow" data-aos="portfolio-fade-up">What I Offer</span>
+          <h2 className="section-title" data-aos="portfolio-fade-up" data-aos-delay="100">
             Development <span className="gradient-text">Services</span>
           </h2>
-          <p className="section-subtitle fade-up stagger-2">
+          <p className="section-subtitle" data-aos="portfolio-fade-up" data-aos-delay="200">
             From idea to deployment — I cover the full product lifecycle with a focus on quality and maintainability.
           </p>
         </div>
 
         <div className="services-grid">
           {SERVICES.map((s, i) => (
-            <div key={s.title} className={`service-card glass-card fade-up stagger-${(i % 4) + 1}`} style={{ '--svc-color': s.color }}>
+            <div
+              key={s.title}
+              className="service-card glass-card"
+              style={{ '--svc-color': s.color }}
+              data-aos="portfolio-fade-up"
+              data-aos-delay={100 * (i % 3)}
+            >
               <div className="svc-icon-wrap" style={{ color: s.color, background: `${s.color}18`, borderColor: `${s.color}33` }}>
                 {s.icon}
               </div>

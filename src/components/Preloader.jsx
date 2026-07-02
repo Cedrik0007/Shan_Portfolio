@@ -6,22 +6,61 @@ export default function Preloader({ onComplete }) {
   const [minTimeElapsed, setMinTimeElapsed] = useState(false)
   const [fadingOut, setFadingOut] = useState(false)
 
-  // 1. Detect when the page content is completely ready
+  // Disable scroll while preloader is active, and restore on unmount
   useEffect(() => {
-    if (document.readyState === 'complete') {
-      setPageReady(true)
-    } else {
-      const handleLoad = () => setPageReady(true)
-      window.addEventListener('load', handleLoad)
-      return () => window.removeEventListener('load', handleLoad)
+    const originalBodyOverflow = document.body.style.overflow
+    const originalHtmlOverflow = document.documentElement.style.overflow
+    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = originalBodyOverflow
+      document.documentElement.style.overflow = originalHtmlOverflow
     }
   }, [])
 
-  // 2. Ensure the animation runs for at least one full cycle (~2.6 seconds)
+  // 1. Detect when critical assets (fonts, hero images, and document state) are ready
+  useEffect(() => {
+    const promises = []
+
+    // A. Wait for general page load / document readystate
+    if (document.readyState === 'complete') {
+      promises.push(Promise.resolve())
+    } else {
+      promises.push(new Promise((resolve) => {
+        window.addEventListener('load', resolve, { once: true })
+      }))
+    }
+
+    // B. Wait for critical fonts to load
+    if (document.fonts) {
+      promises.push(document.fonts.ready)
+    }
+
+    // C. Wait for critical hero image
+    const heroImgUrl = "https://res.cloudinary.com/rlokioxu/image/upload/v1782809351/Shan_2_i4sana.jpg"
+    promises.push(new Promise((resolve) => {
+      const img = new Image()
+      img.src = heroImgUrl
+      if (img.complete) {
+        resolve()
+      } else {
+        img.onload = () => resolve()
+        img.onerror = () => resolve() // Resolve on error so loader isn't stuck forever
+      }
+    }))
+
+    // Wait for all critical assets to load before setting pageReady to true
+    Promise.all(promises).then(() => {
+      setPageReady(true)
+    })
+  }, [])
+
+  // 2. Ensure a minimum display time of 1 second for premium design feel
   useEffect(() => {
     const timer = setTimeout(() => {
       setMinTimeElapsed(true)
-    }, 2600)
+    }, 1000)
     return () => clearTimeout(timer)
   }, [])
 

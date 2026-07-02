@@ -1,5 +1,4 @@
 import '../styles/Projects.css'
-import useScrollReveal from '../hooks/useScrollReveal'
 const ImahkImg = 'https://res.cloudinary.com/rlokioxu/image/upload/v1782809349/Imahk_f7bcnk.png'
 const HonghuiImg = 'https://res.cloudinary.com/rlokioxu/image/upload/v1782809349/Honghui_o6gssm.png'
 const AdminImahkImg = 'https://res.cloudinary.com/rlokioxu/image/upload/v1782809343/Admin_imahk_zspsou.png'
@@ -123,7 +122,12 @@ const PROJECTS = [
 
 function ProjectCard({ title, desc, stack, Thumb, imgsrc, github, demo, accent, index }) {
   return (
-    <article className={`project-card glass-card fade-up stagger-${index + 1}`} style={{ '--accent': accent }}>
+    <article
+      className="project-card glass-card"
+      style={{ '--accent': accent }}
+      data-aos="portfolio-fade-up"
+      data-aos-delay={100 * index}
+    >
       <div className="proj-thumb-wrap">
         {imgsrc ? (
           <img src={imgsrc} alt={title} className="proj-thumb" />
@@ -165,16 +169,15 @@ function ProjectCard({ title, desc, stack, Thumb, imgsrc, github, demo, accent, 
 }
 
 export default function Projects() {
-  const ref = useScrollReveal()
   return (
-    <section className="section projects" id="projects" ref={ref}>
+    <section className="section projects" id="projects">
       <div className="container">
         <div className="projects-header">
-          <span className="eyebrow fade-up">Featured Projects</span>
-          <h2 className="section-title fade-up stagger-1">
+          <span className="eyebrow" data-aos="portfolio-fade-up">Featured Projects</span>
+          <h2 className="section-title" data-aos="portfolio-fade-up" data-aos-delay="100">
             Projects <span className="gradient-text">I've Built</span>
           </h2>
-          <p className="section-subtitle fade-up stagger-2">
+          <p className="section-subtitle" data-aos="portfolio-fade-up" data-aos-delay="200">
             Real-world applications demonstrating end-to-end MERN stack development, from database schema to polished UI.
           </p>
         </div>

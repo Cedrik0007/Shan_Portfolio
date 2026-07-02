@@ -1,5 +1,4 @@
 import '../styles/Hero.css'
-import useScrollReveal from '../hooks/useScrollReveal'
 const devimage = "https://res.cloudinary.com/rlokioxu/image/upload/v1782809351/Shan_2_i4sana.jpg"
 import resumePdf from "../assets/Sanjay N Resume.pdf"
 
@@ -42,35 +41,33 @@ const MARQUEE_ITEMS = [
 
 /* ── Hero Component ───────────────────── */
 export default function Hero() {
-  const sectionRef = useScrollReveal()
-
   const marqueeContent = MARQUEE_ITEMS.map(item => `${item} — `).join('')
 
   return (
     <>
-      <section className="hero" id="home" aria-label="Introduction" ref={sectionRef}>
+      <section className="hero" id="home" aria-label="Introduction">
         <div className="container hero-inner">
           {/* ── LEFT: Copy ── */}
           <div className="hero-copy">
-            <span className="hero-eyebrow fade-up">Full Stack MERN Developer</span>
+            <span className="hero-eyebrow" data-aos="portfolio-fade-up">Full Stack MERN Developer</span>
 
             <h1 className="hero-heading">
               <span className="reveal-wrap">
-                <span className="reveal-text">Hi, I'm</span>
+                <span className="reveal-text" data-aos="reveal-text">Hi, I'm</span>
               </span>
               <br />
               <span className="reveal-wrap">
-                <span className="reveal-text hero-name">Sanjay N</span>
+                <span className="reveal-text hero-name" data-aos="reveal-text" data-aos-delay="100">Sanjay N</span>
               </span>
             </h1>
 
-            <p className="hero-desc fade-up stagger-2">
+            <p className="hero-desc" data-aos="portfolio-fade-up" data-aos-delay="200">
               I build <strong>scalable web applications</strong> with React, Node.js, Express.js,
               and MongoDB — robust backends paired with polished, high-performance interfaces
               that delight users and impress stakeholders.
             </p>
 
-            <div className="hero-actions fade-up stagger-3">
+            <div className="hero-actions" data-aos="portfolio-fade-up" data-aos-delay="300">
               <button
                 className="btn-primary"
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
@@ -86,7 +83,7 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="hero-socials fade-up stagger-4">
+            <div className="hero-socials" data-aos="portfolio-fade-up" data-aos-delay="400">
               {SOCIALS.map(s => (
                 <a key={s.label} href={s.href} className="social-btn" aria-label={s.label} target="_blank" rel="noreferrer">
                   <span className="social-icon">{s.icon}</span>
@@ -96,7 +93,7 @@ export default function Hero() {
           </div>
 
           {/* ── RIGHT: Avatar ── */}
-          <div className="hero-visual fade-up stagger-2">
+          <div className="hero-visual" data-aos="portfolio-fade-left" data-aos-delay="200">
             <div className="avatar-frame">
               <img src={devimage} alt="Sanjay N" className="avatar-img" />
             </div>

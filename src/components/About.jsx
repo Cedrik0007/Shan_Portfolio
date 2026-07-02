@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import '../styles/About.css'
-import useScrollReveal from '../hooks/useScrollReveal'
 import { useLoading } from '../context/LoadingContext'
 
 const STATS = [
@@ -85,7 +84,7 @@ function StatCard({ value, suffix, label, icon, active }) {
 }
 
 export default function About() {
-  const ref = useScrollReveal()
+  const ref = useRef(null)
   const [active, setActive] = useState(false)
   const loading = useLoading()
 
@@ -108,13 +107,13 @@ export default function About() {
       <div className="container about-inner">
         {/* Left: copy */}
         <div className="about-copy">
-          <span className="eyebrow fade-up">About Me</span>
-          <h2 className="section-title fade-up stagger-1">
+          <span className="eyebrow" data-aos="portfolio-fade-up">About Me</span>
+          <h2 className="section-title" data-aos="portfolio-fade-up" data-aos-delay="100">
             Passionate About Building<br />
             <span className="gradient-text">Modern Web Applications</span>
           </h2>
 
-          <div className="about-body fade-up stagger-2">
+          <div className="about-body" data-aos="portfolio-fade-up" data-aos-delay="200">
             <p>
               I'm <strong>Sanjay N</strong>, a Full Stack MERN Developer passionate about building modern,
               scalable, and user-friendly web applications. I enjoy turning ideas into seamless digital
@@ -134,7 +133,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="about-tags fade-up stagger-3">
+          <div className="about-tags" data-aos="portfolio-fade-up" data-aos-delay="300">
             {['Problem Solver', 'Clean Code Advocate', 'Team Player', 'Fast Learner', 'Detail-Oriented'].map(t => (
               <span key={t} className="tag">{t}</span>
             ))}
@@ -144,7 +143,7 @@ export default function About() {
         {/* Right: stats */}
         <div className="about-stats">
           {STATS.map((s, i) => (
-            <div key={s.label} className={`fade-up stagger-${i + 1}`}>
+            <div key={s.label} data-aos="portfolio-fade-up" data-aos-delay={100 * (i + 1)}>
               <StatCard {...s} active={active} />
             </div>
           ))}

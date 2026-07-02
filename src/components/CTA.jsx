@@ -1,13 +1,11 @@
 import '../styles/CTA.css'
-import useScrollReveal from '../hooks/useScrollReveal'
 
 export default function CTA() {
-  const ref = useScrollReveal()
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
   return (
-    <section className="cta" aria-labelledby="cta-heading" ref={ref}>
+    <section className="cta" aria-labelledby="cta-heading">
       {/* Decorative orbs */}
       <div className="cta-orb cta-orb-1" aria-hidden="true" />
       <div className="cta-orb cta-orb-2" aria-hidden="true" />
@@ -17,22 +15,22 @@ export default function CTA() {
       <div className="cta-grid" aria-hidden="true" />
 
       <div className="container cta-inner">
-        <div className="cta-badge fade-up">
+        <div className="cta-badge" data-aos="portfolio-fade-up">
           <span className="badge-pulse" aria-hidden="true" />
           Open to Opportunities
         </div>
 
-        <h2 id="cta-heading" className="cta-heading fade-up stagger-1">
+        <h2 id="cta-heading" className="cta-heading" data-aos="portfolio-fade-up" data-aos-delay="100">
           Ready to Build Your<br />
           <span className="gradient-text">Next Project?</span>
         </h2>
 
-        <p className="cta-sub fade-up stagger-2">
+        <p className="cta-sub" data-aos="portfolio-fade-up" data-aos-delay="200">
           Let's turn your idea into a fast, scalable, and beautifully crafted web application.
           I'm available for full-time roles and freelance contracts.
         </p>
 
-        <div className="cta-actions fade-up stagger-3">
+        <div className="cta-actions" data-aos="portfolio-fade-up" data-aos-delay="300">
           <button
             className="btn-primary cta-btn-primary"
             onClick={() => scrollTo('contact')}
@@ -55,7 +53,7 @@ export default function CTA() {
         </div>
 
         {/* Floating tech pills */}
-        <div className="cta-pills fade-up stagger-4" aria-hidden="true">
+        <div className="cta-pills" data-aos="portfolio-fade-up" data-aos-delay="400" aria-hidden="true">
           {['React.js', 'Node.js', 'Express.js', 'MongoDB', 'REST API', 'JavaScript'].map((t, i) => (
             <span key={t} className="cta-pill" style={{ animationDelay: `${i * 0.18}s` }}>{t}</span>
           ))}

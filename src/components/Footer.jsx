@@ -57,7 +57,7 @@ export default function Footer() {
         {/* ── Top row ── */}
         <div className="footer-top">
           {/* Brand block */}
-          <div className="footer-brand">
+          <div className="footer-brand" data-aos="portfolio-fade-up">
             <a href="#home" className="footer-logo" onClick={e => scrollTo(e, '#home')} aria-label="Go to top">
               <span className="logo-initials">SANJAY</span>
             </a>
@@ -84,7 +84,7 @@ export default function Footer() {
           </div>
 
           {/* Quick links */}
-          <div className="footer-links-col">
+          <div className="footer-links-col" data-aos="portfolio-fade-up" data-aos-delay="100">
             <h3 className="footer-col-title">Quick Links</h3>
             <nav aria-label="Footer navigation">
               <ul className="footer-links" role="list">
@@ -107,7 +107,7 @@ export default function Footer() {
           </div>
 
           {/* Tech stack column */}
-          <div className="footer-links-col">
+          <div className="footer-links-col" data-aos="portfolio-fade-up" data-aos-delay="200">
             <h3 className="footer-col-title">Tech Stack</h3>
             <ul className="footer-tech-list" role="list">
               {['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JavaScript', 'REST APIs', 'Git & GitHub',].map(t => (
@@ -120,7 +120,7 @@ export default function Footer() {
           </div>
 
           {/* Contact column */}
-          <div className="footer-links-col">
+          <div className="footer-links-col" data-aos="portfolio-fade-up" data-aos-delay="300">
             <h3 className="footer-col-title">Contact</h3>
             <ul className="footer-contact-list" role="list">
               <li>
@@ -159,7 +159,7 @@ export default function Footer() {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="footer-bottom">
+        <div className="footer-bottom" data-aos="portfolio-fade-up" data-aos-delay="100">
           <p className="footer-copy">
             © {year} <span className="footer-name">Sanjay N</span>. All Rights Reserved.
           </p>

@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react'
 import '../styles/Contact.css'
-import useScrollReveal from '../hooks/useScrollReveal'
 
 const CONTACT_ITEMS = [
   {
@@ -49,7 +48,6 @@ function validate(f) {
 }
 
 export default function Contact() {
-  const ref = useScrollReveal()
   const [fields, setFields] = useState(INITIAL)
   const [errors, setErrors] = useState({})
   const [touched, setTouched] = useState({})
@@ -114,22 +112,22 @@ export default function Contact() {
     `contact-field${errors[name] && touched[name] ? ' field-error' : ''}${!errors[name] && touched[name] && fields[name] ? ' field-ok' : ''}`
 
   return (
-    <section className="section contact" id="contact" ref={ref}>
+    <section className="section contact" id="contact">
       <div className="contact-glow" aria-hidden="true" />
       <div className="container">
         <div className="contact-header">
-          <span className="eyebrow fade-up">Contact</span>
-          <h2 className="section-title fade-up stagger-1">
+          <span className="eyebrow" data-aos="portfolio-fade-up">Contact</span>
+          <h2 className="section-title" data-aos="portfolio-fade-up" data-aos-delay="100">
             Let's Build Something <span className="gradient-text">Amazing Together</span>
           </h2>
-          <p className="section-subtitle fade-up stagger-2">
+          <p className="section-subtitle" data-aos="portfolio-fade-up" data-aos-delay="200">
             Open to full-time roles, freelance projects, and interesting collaborations. Drop me a message and I'll get back within 24 hours.
           </p>
         </div>
 
         <div className="contact-inner">
           {/* ── Left: info ── */}
-          <div className="contact-info fade-up stagger-2">
+          <div className="contact-info" data-aos="portfolio-fade-right" data-aos-delay="200">
             <h3 className="info-heading">Get In Touch</h3>
             <p className="info-text">
               Whether you have a project in mind, want to discuss opportunities, or just want to say hello — I'm always happy to connect.
@@ -162,7 +160,7 @@ export default function Contact() {
           </div>
 
           {/* ── Right: form ── */}
-          <div className="contact-form-wrap glass-card fade-up stagger-3">
+          <div className="contact-form-wrap glass-card" data-aos="portfolio-fade-left" data-aos-delay="300">
             {status === 'sent' ? (
               <div className="form-success" role="alert">
                 <div className="success-icon" aria-hidden="true">✓</div>
